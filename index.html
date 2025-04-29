@@ -3,11 +3,162 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World</title>
+    <title>XinfangL</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('https://img.picui.cn/free/2025/04/29/6810becd7a09e.jpg'); /* 设置背景图片 */
+            background-size: cover; /* 背景图片自适应 */
+            background-position: center; /* 背景图片居中 */
+            background-repeat: no-repeat; /* 背景图片不重复 */
+            position: relative; /* 使绝对定位的元素相对于body定位 */
+        }
+        .container {
+            text-align: center;
+            color: white; /* 文字颜色，根据背景图片调整 */
+            background: rgba(0, 0, 0, 0.5); /* 添加半透明背景，让文字更清晰 */
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .container h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .container button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 16px;
+            cursor: pointer;
+            color: white;
+            background-color: #333;
+            border: none;
+            border-radius: 5px;
+        }
+        .top-left-text {
+            position: absolute; /* 绝对定位 */
+            top: 10px; /* 距离顶部10像素 */
+            left: 10px; /* 距离左侧10像素 */
+            color: white; /* 文字颜色 */
+            font-size: 18px; /* 字体大小 */
+            background: rgba(0, 0, 0, 0.5); /* 半透明背景 */
+            padding: 5px 10px; /* 内边距 */
+            border-radius: 5px; /* 圆角 */
+        }
+        .top-left-subtext {
+            position: absolute; /* 绝对定位 */
+            top: 40px; /* 距离顶部40像素 */
+            left: 10px; /* 距离左侧10像素 */
+            color: white; /* 文字颜色 */
+            font-size: 16px; /* 字体大小 */
+            background: rgba(0, 0, 0, 0.5); /* 半透明背景 */
+            padding: 5px 10px; /* 内边距 */
+            border-radius: 5px; /* 圆角 */
+        }
+        .top-left-subtext2 {
+            position: absolute; /* 绝对定位 */
+            top: 70px; /* 距离顶部70像素，与前两个间距一致 */
+            left: 10px; /* 距离左侧10像素 */
+            color: white; /* 文字颜色 */
+            font-size: 16px; /* 字体大小 */
+            background: rgba(0, 0, 0, 0.5); /* 半透明背景 */
+            padding: 5px 10px; /* 内边距 */
+            border-radius: 5px; /* 圆角 */
+        }
+    </style>
 </head>
 <body>
-    <p>Hello World</p>
-    <p>刘新芳是个大美女。</p>
-    <p>你觉着呢</p>
+    <div class="top-left-text">Hello world</div> <!-- 左上角的文字 -->
+    <div class="top-left-subtext">刘新芳是个大美女</div> <!-- 左上角的副文本 -->
+    <div class="top-left-subtext2">气若夜繁星，烨然神人</div> <!-- 新增的文本 -->
+    <div class="container">
+        <h1>你觉得呢</h1>
+        <button onclick="disagree()">否</button> <!-- 交换按钮位置 -->
+        <button onclick="agree()">是</button> <!-- 交换按钮位置 -->
+    </div>
+
+    <script>
+        // 用于存储当前显示的对话框
+        let currentDialog = null;
+
+        function agree() {
+            // 如果已经有对话框显示，先移除它
+            if (currentDialog) {
+                document.body.removeChild(currentDialog);
+            }
+
+            // 创建自定义对话框
+            const dialog = document.createElement('div');
+            dialog.style.position = 'fixed';
+            dialog.style.top = '70%'; // 对话框位置
+            dialog.style.left = '50%';
+            dialog.style.transform = 'translate(-50%, -50%)';
+            dialog.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+            dialog.style.color = 'white';
+            dialog.style.padding = '20px';
+            dialog.style.borderRadius = '10px';
+            dialog.style.zIndex = '1000';
+            dialog.textContent = "一点都不谦虚";
+
+            // 添加到文档中
+            document.body.appendChild(dialog);
+
+            // 更新当前显示的对话框
+            currentDialog = dialog;
+
+            // 点击任意位置关闭对话框
+            dialog.addEventListener('click', () => {
+                document.body.removeChild(dialog);
+                currentDialog = null; // 清除当前对话框引用
+            });
+        }
+
+        function disagree() {
+            // 如果已经有对话框显示，先移除它
+            if (currentDialog) {
+                document.body.removeChild(currentDialog);
+            }
+
+            // 创建自定义对话框
+            const dialog = document.createElement('div');
+            dialog.style.position = 'fixed';
+            dialog.style.top = '75%'; // 对话框再往下移动一点
+            dialog.style.left = '50%';
+            dialog.style.transform = 'translate(-50%, -50%)';
+            dialog.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+            dialog.style.color = 'white';
+            dialog.style.padding = '20px';
+            dialog.style.borderRadius = '10px';
+            dialog.style.zIndex = '1000';
+
+            // 创建内容
+            const content = document.createElement('div');
+            content.style.color = 'white'; // 默认文字颜色
+            content.textContent = "As a crazy fan of Xinfang Liu, I don't permit you say this.\n";
+            const additionalText = document.createElement('div');
+            additionalText.style.color = 'green'; // 改为绿色
+            additionalText.textContent = "译:作为一名XinfangLiu的狂热fan，我不允许你这样说";
+
+            // 将内容添加到对话框
+            dialog.appendChild(content);
+            dialog.appendChild(additionalText);
+
+            // 添加到文档中
+            document.body.appendChild(dialog);
+
+            // 更新当前显示的对话框
+            currentDialog = dialog;
+
+            // 点击任意位置关闭对话框
+            dialog.addEventListener('click', () => {
+                document.body.removeChild(dialog);
+                currentDialog = null; // 清除当前对话框引用
+            });
+        }
+    </script>
 </body>
 </html>
